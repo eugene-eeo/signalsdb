@@ -1,9 +1,5 @@
-.. image:: https://raw.githubusercontent.com/eugene-eeo/signalsdb/master/media/red-signal-light.png
-   :align: left
-   :scale: 40%
-
-SignalsDB
-=========
+|logo| SignalsDB
+================
 
 SignalsDB is an MIT-licensed library written in Python providing
 a simple way to query a curated database of Unix signals.
@@ -33,3 +29,6 @@ or descriptions, in a case-insensitive way using globs::
       'description': 'profiling timer alarm',
       'id': 27,
       'signal': 'SIGPROF'}]
+
+
+.. |logo| image:: https://raw.githubusercontent.com/eugene-eeo/signalsdb/master/media/red-signal-light.png
