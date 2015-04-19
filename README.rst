@@ -1,4 +1,4 @@
-.. image:: /Users/mango/signalsdb/media/red-signal-light.png
+.. image:: https://raw.githubusercontent.com/eugene-eeo/signalsdb/master/media/red-signal-light.png
    :align: left
    :scale: 40%
 
