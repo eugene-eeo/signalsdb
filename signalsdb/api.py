@@ -29,7 +29,7 @@ def explain(code, signals=SIGNALS):
         )
 
 
-def search(signal, action='', signals=SIGNALS):
+def search(signal='', action='', signals=SIGNALS):
     """
     Search the signals DB for signal named *signal*,
     and which action matches *action* in a case
