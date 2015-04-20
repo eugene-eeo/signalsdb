@@ -30,5 +30,19 @@ in a case insensitive way using regexes::
       'id': 27,
       'signal': 'SIGPROF'}]
 
+Installation:
+-------------
+
+From PyPI::
+
+    $ pip install signalsdb
+
+For hacking on SignalsDB it is recommended that you install
+from the git repository::
+
+    $ git clone git@github.com:eugene-eeo/signalsdb.git
+    $ cd signalsdb
+    $ pip install .
+
 
 .. |logo| image:: https://raw.githubusercontent.com/eugene-eeo/signalsdb/master/media/logo-small.png
