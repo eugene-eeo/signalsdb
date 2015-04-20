@@ -29,24 +29,21 @@ def explain(code, signals=SIGNALS):
         )
 
 
-def search(signal='', action='', description='', signals=SIGNALS):
+def search(signal, action='', signals=SIGNALS):
     """
-    Search the signals database for a signal given
-    it's *signal*, *action* and *description* queries
-    in the form of regexes, in a case-insensitive way.
+    Search the signals DB for signal named *signal*,
+    and which action matches *action* in a case
+    insensitive way.
 
-    :param signal: Signal query (regex).
-    :param action: Action query (regex).
-    :param description: Description query (regex).
-    :param signals: A database of signals.
+    :param signal: Regex for signal name.
+    :param action: Regex for default action.
+    :param signals: Database of signals.
     """
-    q_sig = compile_re(signal).match
-    q_act = compile_re(action).match
-    q_dsc = compile_re(description).match
-
+    signal = compile_re(signal).match
+    action = compile_re(action).match
     arr = []
     for code in signals:
-        sig, act, dsc = signals[code]
-        if q_sig(sig) and q_act(act) and q_dsc(dsc):
+        sig, act, _ = signals[code]
+        if signal(sig) and action(act):
             arr.append(explain(code, signals=signals))
     return arr
