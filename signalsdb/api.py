@@ -41,9 +41,9 @@ def search(signal='', action='', signals=SIGNALS):
     """
     signal = compile_re(signal).match
     action = compile_re(action).match
-    arr = []
+    res = []
     for code in signals:
         sig, act, _ = signals[code]
         if signal(sig) and action(act):
-            arr.append(explain(code, signals=signals))
-    return arr
+            res.append(explain(code, signals=signals))
+    return res
