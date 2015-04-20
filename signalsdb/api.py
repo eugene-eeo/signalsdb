@@ -23,5 +23,5 @@ def search(signal='*', action='*', description='*', signals=SIGNALS):
     for code in signals:
         sig, action, desc = signals[code]
         if q_sig(sig) and q_act(action) and q_desc(desc):
-            arr.append(explain(code))
+            arr.append(explain(code, signals=signals))
     return arr
