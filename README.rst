@@ -31,4 +31,4 @@ in a case insensitive way using regexes::
       'signal': 'SIGPROF'}]
 
 
-.. |logo| image:: https://raw.githubusercontent.com/eugene-eeo/signalsdb/master/media/red-signal-light.png
+.. |logo| image:: https://raw.githubusercontent.com/eugene-eeo/signalsdb/master/media/logo-small.png
