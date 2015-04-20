@@ -17,10 +17,10 @@ To explain a Unix signal based on the integer id::
      'signal': 'SIGPIPE'}
 
 Then to query the DB based on the signal name, default actions,
-or descriptions, in a case-insensitive way using globs::
+or descriptions, in a case-insensitive way using regexes::
 
     >>> from signalsdb.api import search
-    >>> search(signal='sigp*', action='kill', description='P*')
+    >>> search(signal='sigp\w', action='kill', description='\w+')
     [{'action': 'kill',
       'description': 'write on a pipe with no reader',
       'id': 13,

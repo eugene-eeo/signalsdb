@@ -7,7 +7,7 @@
 
 
 from signalsdb.db import SIGNALS
-from signalsdb.helpers import compile_glob
+from signalsdb.helpers import compile_re
 
 __all__ = ('explain', 'search')
 
@@ -29,25 +29,24 @@ def explain(code, signals=SIGNALS):
         )
 
 
-def search(signal='*', action='*', description='*', signals=SIGNALS):
+def search(signal='', action='', description='', signals=SIGNALS):
     """
-    Search the signals database for a *signal*,
-    it's default *action*, and the *description*
-    in a case-insensitive way using the glob
-    syntax.
+    Search the signals database for a signal given
+    it's *signal*, *action* and *description* queries
+    in the form of regexes, in a case-insensitive way.
 
-    :param signal: The signal query.
-    :param action: The action query.
-    :param description: The description query.
+    :param signal: Signal query (regex).
+    :param action: Action query (regex).
+    :param description: Description query (regex).
     :param signals: A database of signals.
     """
-    q_sig = compile_glob(signal)
-    q_act = compile_glob(action)
-    q_desc = compile_glob(description)
+    q_sig = compile_re(signal).match
+    q_act = compile_re(action).match
+    q_dsc = compile_re(description).match
 
     arr = []
     for code in signals:
-        sig, action, desc = signals[code]
-        if q_sig(sig) and q_act(action) and q_desc(desc):
+        sig, act, dsc = signals[code]
+        if q_sig(sig) and q_act(act) and q_dsc(dsc):
             arr.append(explain(code, signals=signals))
     return arr

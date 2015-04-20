@@ -6,15 +6,14 @@
 """
 
 
-from fnmatch import translate
 import re
 
 
-def compile_glob(glob):
+def compile_re(pattern):
     """
-    Compile a glob into a regex object compiled
+    Convert a *pattern* into a regex object compiled
     with the IGNORECASE flag.
 
-    :param glob: A glob (string).
+    :param pattern: A regex (string).
     """
-    return re.compile(translate(glob), re.IGNORECASE).search
+    return re.compile(pattern, re.IGNORECASE)

@@ -18,11 +18,10 @@ def test_explain():
 
 
 @mark.parametrize('signal,action,description', [
-    ('signa*', 'acti*', 'de*'),
-    ('SIGNA*', 'ACTI*', 'DE*'),
+    ('signal', '(ACTION|Kill)', '\w+'),
+    ('SIGNA*', 'action', 'De[sc]{,2}'),
 ])
 def test_search(signal, action, description):
     assert search(signal=signal,
                   action=action,
-                  description=description,
                   signals=SIGNALS) == [explain(13, signals=SIGNALS)]
