@@ -6,17 +6,10 @@
 """
 
 
-from signalsdb.db import SIGNALS
+from signalsdb.db import SIGNALS, NoSuchSignal
 from signalsdb.helpers import compile_re
 
 __all__ = ('explain', 'search')
-
-
-class NoSuchSignal(KeyError):
-    """
-    The given signal wasn't found in the DB.
-    """
-    pass
 
 
 def explain(code, signals=SIGNALS):
