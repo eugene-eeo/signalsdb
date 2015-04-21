@@ -1,5 +1,5 @@
-from pytest import mark
-from signalsdb.api import explain, search
+from pytest import mark, raises
+from signalsdb.api import explain, search, NoSuchSignal
 
 
 SIGNALS = {
@@ -25,3 +25,8 @@ def test_search(signal, action):
     assert search(signal=signal,
                   action=action,
                   signals=SIGNALS) == [explain(13, signals=SIGNALS)]
+
+
+def test_explain_fake():
+    with raises(NoSuchSignal):
+        explain(0, signals=SIGNALS)

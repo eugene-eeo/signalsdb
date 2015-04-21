@@ -12,6 +12,13 @@ from signalsdb.helpers import compile_re
 __all__ = ('explain', 'search')
 
 
+class NoSuchSignal(KeyError):
+    """
+    The given signal wasn't found in the DB.
+    """
+    pass
+
+
 def explain(code, signals=SIGNALS):
     """
     Explain what a given *code* does, including it's
@@ -20,6 +27,8 @@ def explain(code, signals=SIGNALS):
     :param code: An integer signal.
     :param signals: A database of signals.
     """
+    if code not in signals:
+        raise NoSuchSignal
     signal, action, description = signals[code]
     return dict(
         id=code,
