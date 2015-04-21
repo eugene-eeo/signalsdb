@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='signalsdb',
-    version='0.1',
+    version='0.1.1',
     url='https://github.com/eugene-eeo/signalsdb',
     author='Eeo Jun',
     author_email='packwolf58@gmail.com',
