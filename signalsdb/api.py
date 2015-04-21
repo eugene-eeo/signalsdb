@@ -6,8 +6,8 @@
 """
 
 
-from signalsdb.db import SIGNALS, NoSuchSignal
-from signalsdb.helpers import compile_re
+from signalsdb.db import SIGNALS
+from signalsdb.helpers import compile_re, NoSuchSignal
 
 __all__ = ('explain', 'search')
 
@@ -21,7 +21,7 @@ def explain(code, signals=SIGNALS):
     :param signals: A database of signals.
     """
     if code not in signals:
-        raise NoSuchSignal
+        raise NoSuchSignal(code)
     signal, action, description = signals[code]
     return dict(
         id=code,

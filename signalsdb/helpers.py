@@ -23,4 +23,8 @@ class NoSuchSignal(KeyError):
     """
     The given signal wasn't found in the DB.
     """
-    pass
+    def __init__(self, signal):
+        self.message = 'No such signal "%s"' % (signal,)
+
+    def __str__(self):
+        return self.message
