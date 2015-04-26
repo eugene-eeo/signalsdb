@@ -23,12 +23,12 @@ def explain(code, signals=SIGNALS):
     if code not in signals:
         raise NoSuchSignal(code)
     signal, action, description = signals[code]
-    return dict(
-        id=code,
-        signal=signal,
-        action=action,
-        description=description,
-        )
+    return {
+        'id': code,
+        'signal': signal,
+        'action': action,
+        'description': description,
+        }
 
 
 def search(signal='', action='', signals=SIGNALS):
