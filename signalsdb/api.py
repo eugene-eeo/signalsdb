@@ -41,11 +41,11 @@ def search(signal='', action='', signals=SIGNALS):
     :param action: Regex for default action.
     :param signals: Database of signals.
     """
-    signal = compile_re(signal).match
-    action = compile_re(action).match
+    sig_matches = compile_re(signal).match
+    act_matches = compile_re(action).match
     res = []
     for code in signals:
         sig, act, _ = signals[code]
-        if signal(sig) and action(act):
+        if sig_matches(sig) and act_matches(act):
             res.append(explain(code, signals=signals))
     return res
