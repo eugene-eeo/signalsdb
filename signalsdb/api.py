@@ -14,8 +14,8 @@ __all__ = ('explain', 'search')
 
 def explain(code, signals=SIGNALS):
     """
-    Explain what a given *code* does, including it's
-    signal name.
+    Explain what a given integer signal *code* does,
+    including it's signal name.
 
     :param code: An integer signal.
     :param signals: A database of signals.
