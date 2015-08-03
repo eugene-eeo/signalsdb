@@ -49,5 +49,5 @@ NAMES = {
 
 SIGNALS = {
     getattr(signal, k): (k,) + NAMES[k] for k in NAMES if
-    hasattr(signal, k)
+                        hasattr(signal, k) and k in NAMES
 }
