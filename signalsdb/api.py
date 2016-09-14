@@ -6,10 +6,17 @@
 """
 
 
+import re
 from signalsdb.db import SIGNALS
-from signalsdb.helpers import compile_re, NoSuchSignal
 
 __all__ = ('explain', 'search')
+
+
+class NoSuchSignal(KeyError):
+    """
+    The given signal wasn't found in the DB.
+    """
+    pass
 
 
 def explain(code, signals=SIGNALS):
@@ -41,11 +48,11 @@ def search(signal='', action='', signals=SIGNALS):
     :param action: Regex for default action.
     :param signals: Database of signals.
     """
-    sig_matches = compile_re(signal).match
-    act_matches = compile_re(action).match
+    sig_re = re.compile(signal, re.IGNORECASE)
+    act_re = re.compile(action, re.IGNORECASE)
     res = []
     for code in signals:
         sig, act, _ = signals[code]
-        if sig_matches(sig) and act_matches(act):
+        if sig_re.match(sig) and act_re.match(act):
             res.append(explain(code, signals=signals))
     return res
